@@ -4,10 +4,8 @@ import com.feign.consumer.feignconsumer.pojo.MaiBhiPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.stream.Stream;
 
 @Service
@@ -40,6 +38,26 @@ public class AlgoClientService {
         entriesStream.forEach(entry -> printPojo(entry));
     }
 
+    public void createMapOfPojosFromListOfPojos()
+    {
+        MaiBhiPojo mbp1 = new MaiBhiPojo(1,"A");
+        MaiBhiPojo mbp2 = new MaiBhiPojo(2,"B");
+        MaiBhiPojo mbp3 = new MaiBhiPojo(3,"C");
+        MaiBhiPojo mbp4 = new MaiBhiPojo(4,"D");
+
+        List<MaiBhiPojo> maiBhiPojoList=new ArrayList<>(List.of(mbp1,mbp2,mbp3,mbp4));
+
+        Map<String, MaiBhiPojo> pojoMap = new HashMap<>();
+
+        maiBhiPojoList.stream().forEach(element ->
+        {
+
+            pojoMap.put(element.getName(),element);
+        });
+
+
+
+    }
     private void printPojo(Entry<String, MaiBhiPojo> entry)
     {
         System.out.println("Key "+entry.getKey()+ " Value "+ entry.getValue());
