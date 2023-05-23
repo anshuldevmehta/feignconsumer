@@ -51,7 +51,6 @@ public class AlgoClientService {
 
         maiBhiPojoList.stream().forEach(element ->
         {
-
             pojoMap.put(element.getName(),element);
         });
 
